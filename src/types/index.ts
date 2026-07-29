@@ -112,3 +112,66 @@ export interface UserAccount {
   status: 'Aktif' | 'Terblokir';
 }
 
+export interface GuestItem {
+  id: string;
+  name: string;
+  phone: string;
+  category: string;
+  statusSent: boolean;
+}
+
+export interface RsvpResponse {
+  id: string;
+  name: string;
+  attendance: 'Hadir' | 'Tidak Hadir' | 'Ragu-ragu';
+  pax: number;
+  message: string;
+  date: string;
+}
+
+export interface LoveStoryItem {
+  year: string;
+  title: string;
+  story: string;
+}
+
+export interface BankAccountItem {
+  bankName: string;
+  accountNumber: string;
+  accountHolder: string;
+}
+
+export interface UserInvitation {
+  id: string;
+  userId: string;
+  slug: string;
+  templateId: string;
+  templateName: string;
+  templateImage: string;
+  title: string;
+  status: 'Aktif' | 'Draft' | 'Expired';
+  viewsCount: number;
+  createdAt: string;
+  eventDetails: {
+    groomName: string;
+    groomParents: string;
+    brideName: string;
+    brideParents: string;
+    date: string;
+    time: string;
+    locationName: string;
+    locationAddress: string;
+    mapsUrl: string;
+    receptionDate: string;
+    receptionTime: string;
+    receptionLocation: string;
+  };
+  gallery: string[];
+  musicTitle: string;
+  loveStory: LoveStoryItem[];
+  bankAccounts: BankAccountItem[];
+  guestList: GuestItem[];
+  rsvps: RsvpResponse[];
+}
+
+

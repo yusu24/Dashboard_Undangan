@@ -13,6 +13,7 @@ import { TemplateDetailModal } from './components/TemplateDetailModal';
 import { CreateOrderModal } from './components/CreateOrderModal';
 import { AuthModal } from './components/AuthModal';
 import { AdminDashboard } from './components/AdminDashboard';
+import { UserDashboard } from './components/UserDashboard';
 import { 
   TEMPLATES_DATA, 
   PRICING_PLANS, 
@@ -21,14 +22,15 @@ import {
   FEATURES_DATA, 
   TESTIMONIALS_DATA, 
   INITIAL_ORDERS, 
-  INITIAL_USERS 
+  INITIAL_USERS,
+  INITIAL_USER_INVITATIONS
 } from './data/mockData';
-import { TemplateTheme, PricingPlan, HeroConfig, FaqItem, FeatureItem, Testimonial, Order, UserAccount } from './types';
+import { TemplateTheme, PricingPlan, HeroConfig, FaqItem, FeatureItem, Testimonial, Order, UserAccount, UserInvitation } from './types';
 
 export default function App() {
-  const [currentView, setCurrentView] = useState<'landing' | 'admin'>('landing');
+  const [currentView, setCurrentView] = useState<'landing' | 'admin' | 'user-dashboard'>('landing');
 
-  // Dynamic Application Data States (Managed by Admin)
+  // Dynamic Application Data States (Managed by Admin & User)
   const [templates, setTemplates] = useState<TemplateTheme[]>(TEMPLATES_DATA);
   const [pricingPlans, setPricingPlans] = useState<PricingPlan[]>(PRICING_PLANS);
   const [heroConfig, setHeroConfig] = useState<HeroConfig>(INITIAL_HERO_CONFIG);
@@ -37,6 +39,7 @@ export default function App() {
   const [testimonialsData, setTestimonialsData] = useState<Testimonial[]>(TESTIMONIALS_DATA);
   const [orders, setOrders] = useState<Order[]>(INITIAL_ORDERS);
   const [users, setUsers] = useState<UserAccount[]>(INITIAL_USERS);
+  const [userInvitations, setUserInvitations] = useState<UserInvitation[]>(INITIAL_USER_INVITATIONS);
 
   // Modals & Selection States
   const [selectedTemplateForDetail, setSelectedTemplateForDetail] = useState<TemplateTheme | null>(null);
@@ -110,6 +113,15 @@ export default function App() {
     setUsers(prev => prev.map(u => u.id === userId ? { ...u, status: u.status === 'Aktif' ? 'Terblokir' : 'Aktif' } : u));
   };
 
+  // User Invitations Handlers
+  const handleUpdateUserInvitation = (updatedInv: UserInvitation) => {
+    setUserInvitations(prev => prev.map(inv => inv.id === updatedInv.id ? updatedInv : inv));
+  };
+
+  const handleDeleteUserInvitation = (id: string) => {
+    setUserInvitations(prev => prev.filter(inv => inv.id !== id));
+  };
+
   // Auth Handlers
   const handleOpenAuthModal = (mode: 'login' | 'register') => {
     setAuthModalMode(mode);
@@ -174,6 +186,33 @@ export default function App() {
     );
   }
 
+  if (currentView === 'user-dashboard') {
+    return (
+      <>
+        <UserDashboard 
+          onBackToMain={() => setCurrentView('landing')}
+          invitations={userInvitations}
+          templates={templates}
+          onCreateNewInvitation={() => setIsCreateModalOpen(true)}
+          onUpdateInvitation={handleUpdateUserInvitation}
+          onDeleteInvitation={handleDeleteUserInvitation}
+          onPreviewInvitation={(tmpl) => setSelectedTemplateForDetail(tmpl)}
+        />
+        <TemplateDetailModal 
+          template={selectedTemplateForDetail}
+          onClose={() => setSelectedTemplateForDetail(null)}
+          onUseTemplate={(tmpl) => handleOpenCreateWithTemplate(tmpl)}
+        />
+        <CreateOrderModal 
+          isOpen={isCreateModalOpen}
+          onClose={() => setIsCreateModalOpen(false)}
+          initialTemplate={modalInitialTemplate}
+          initialPlan={modalInitialPlan}
+        />
+      </>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-[#F9F6F2] text-slate-800 font-sans-body relative overflow-x-hidden selection:bg-purple-200 selection:text-purple-900">
       
@@ -188,6 +227,7 @@ export default function App() {
         currentUser={currentUser}
         onLogout={handleLogout}
         onOpenAdminDashboard={() => setCurrentView('admin')}
+        onOpenUserDashboard={() => setCurrentView('user-dashboard')}
       />
 
       {/* Hero Section */}

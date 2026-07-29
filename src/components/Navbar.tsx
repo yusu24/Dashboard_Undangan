@@ -7,6 +7,7 @@ interface NavbarProps {
   currentUser: { name: string; email: string; avatar?: string } | null;
   onLogout: () => void;
   onOpenAdminDashboard: () => void;
+  onOpenUserDashboard: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({ 
@@ -14,7 +15,8 @@ export const Navbar: React.FC<NavbarProps> = ({
   onOpenAuthModal, 
   currentUser, 
   onLogout,
-  onOpenAdminDashboard
+  onOpenAdminDashboard,
+  onOpenUserDashboard
 }) => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -95,12 +97,22 @@ export const Navbar: React.FC<NavbarProps> = ({
                     <button
                       onClick={() => {
                         setUserDropdownOpen(false);
-                        onOpenAdminDashboard();
+                        onOpenUserDashboard();
                       }}
                       className="w-full text-left px-3 py-2 rounded-xl text-purple-700 bg-purple-50 hover:bg-purple-100 font-bold flex items-center gap-2 transition-colors mb-1"
                     >
                       <Sparkles className="w-4 h-4 text-purple-600" />
-                      <span>Admin Dashboard Center</span>
+                      <span>Dashboard Undangan Saya</span>
+                    </button>
+                    <button
+                      onClick={() => {
+                        setUserDropdownOpen(false);
+                        onOpenAdminDashboard();
+                      }}
+                      className="w-full text-left px-3 py-2 rounded-xl text-slate-700 hover:bg-slate-100 font-bold flex items-center gap-2 transition-colors mb-1"
+                    >
+                      <User className="w-4 h-4 text-slate-600" />
+                      <span>Admin Control Center</span>
                     </button>
                     <button
                       onClick={() => {
@@ -148,12 +160,20 @@ export const Navbar: React.FC<NavbarProps> = ({
           )}
 
           <button
+            onClick={onOpenUserDashboard}
+            className="px-3.5 py-2 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white rounded-full text-xs font-bold transition-all flex items-center gap-1.5 shadow-sm shadow-purple-500/20"
+            title="Dashboard Undangan Saya"
+          >
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>Dashboard Saya</span>
+          </button>
+
+          <button
             onClick={onOpenAdminDashboard}
-            className="px-3.5 py-2 bg-purple-100 hover:bg-purple-200 text-purple-900 rounded-full text-xs font-bold transition-all flex items-center gap-1.5 border border-purple-300 shadow-sm"
+            className="px-3 py-2 bg-slate-100 hover:bg-slate-200 text-slate-800 rounded-full text-xs font-bold transition-all flex items-center gap-1.5 border border-slate-300"
             title="Panel Admin Control Center"
           >
-            <Sparkles className="w-3.5 h-3.5 text-purple-600" />
-            <span>Admin Panel</span>
+            <span>Admin</span>
           </button>
 
           <button

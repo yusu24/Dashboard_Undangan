@@ -1,4 +1,99 @@
-import { TemplateTheme, PricingPlan, FeatureItem, Testimonial, WishComment, HeroConfig, Order, UserAccount, FaqItem } from '../types';
+import { TemplateTheme, PricingPlan, FeatureItem, Testimonial, WishComment, HeroConfig, Order, UserAccount, FaqItem, UserInvitation } from '../types';
+
+export const INITIAL_USER_INVITATIONS: UserInvitation[] = [
+  {
+    id: 'inv-1',
+    userId: 'usr-2',
+    slug: 'rian-anindya',
+    templateId: 'ethereal-garden',
+    templateName: 'The Ethereal Garden',
+    templateImage: 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=800',
+    title: 'The Wedding of Rian & Anindya',
+    status: 'Aktif',
+    viewsCount: 428,
+    createdAt: '28 Juli 2026',
+    eventDetails: {
+      groomName: 'Rian Pratama, S.T.',
+      groomParents: 'Putra Pertama Bpk. H. Bambang & Ibu Hj. Ratna',
+      brideName: 'Anindya Larasati, S.Ked.',
+      brideParents: 'Putri Kedua Bpk. Dr. Suroso & Ibu Dwi Hastuti',
+      date: 'Sabtu, 24 Oktober 2026',
+      time: '08:00 - 10:00 WIB',
+      locationName: 'Masjid Agung Trans Studio',
+      locationAddress: 'Jl. Gatot Subroto No. 289, Bandung',
+      mapsUrl: 'https://maps.google.com',
+      receptionDate: 'Sabtu, 24 Oktober 2026',
+      receptionTime: '11:00 - 15:00 WIB',
+      receptionLocation: 'Grand Ballroom Trans Luxury Hotel Bandung'
+    },
+    gallery: [
+      'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=800',
+      'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&q=80&w=800',
+      'https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&q=80&w=800'
+    ],
+    musicTitle: 'Acoustic Piano - A Thousand Years',
+    loveStory: [
+      { year: '2022', title: 'Pertemuan Pertama', story: 'Berjumpa pertama kali saat kegiatan bakti sosial di Kampus ITB Bandung.' },
+      { year: '2024', title: 'Momen Lamaran', story: 'Rian melamar Anindya di tepi Danau Toba disaksikan keluarga dekat.' },
+      { year: '2026', title: 'Menuju Pelaminan', story: 'Memutuskan untuk mengikat janji suci pernikahan abadi.' }
+    ],
+    bankAccounts: [
+      { bankName: 'BCA', accountNumber: '8830192811', accountHolder: 'Rian Pratama' },
+      { bankName: 'Bank Mandiri', accountNumber: '1310088990011', accountHolder: 'Anindya Larasati' }
+    ],
+    guestList: [
+      { id: 'g-1', name: 'Bpk. Ahmad Suherman', phone: '08123456789', category: 'Keluarga Besar', statusSent: true },
+      { id: 'g-2', name: 'Ibu Dewi Sartika', phone: '08198765432', category: 'Teman Kantor', statusSent: true },
+      { id: 'g-3', name: 'Dimas Kurnia & Partner', phone: '08571122334', category: 'Alumni ITB', statusSent: false }
+    ],
+    rsvps: [
+      { id: 'r-1', name: 'Ahmad Suherman', attendance: 'Hadir', pax: 2, message: 'Selamat untuk Rian & Anindya! Semoga menjadi keluarga sakinah mawaddah warahmah.', date: '28 Juli 2026' },
+      { id: 'r-2', name: 'Dewi Sartika', attendance: 'Hadir', pax: 1, message: 'Selamat ya Anin manis! Maaf datang pas resepsi yaa.', date: '28 Juli 2026' },
+      { id: 'r-3', name: 'Dimas Kurnia', attendance: 'Ragu-ragu', pax: 1, message: 'Semoga lancar acaranya Bro Rian!', date: '29 Juli 2026' }
+    ]
+  },
+  {
+    id: 'inv-2',
+    userId: 'usr-2',
+    slug: 'kayla-sweet17',
+    templateId: 'sweet-sixteen',
+    templateName: 'Pastel Dream Birthday',
+    templateImage: 'https://images.unsplash.com/photo-1530103862676-de8c9debad1d?auto=format&fit=crop&q=80&w=800',
+    title: 'Kayla Sweet 17th Birthday Celebration',
+    status: 'Aktif',
+    viewsCount: 189,
+    createdAt: '29 Juli 2026',
+    eventDetails: {
+      groomName: 'Kayla Zhafira',
+      groomParents: 'Putri kesayangan Bpk. Hendra & Ibu Maya',
+      brideName: '',
+      brideParents: '',
+      date: 'Minggu, 20 September 2026',
+      time: '15:00 - 18:00 WIB',
+      locationName: 'The Garden Café & Lounge',
+      locationAddress: 'Jl. Senopati No. 45, Jakarta Selatan',
+      mapsUrl: 'https://maps.google.com',
+      receptionDate: 'Minggu, 20 September 2026',
+      receptionTime: '15:00 - 18:00 WIB',
+      receptionLocation: 'The Garden Café & Lounge'
+    },
+    gallery: [
+      'https://images.unsplash.com/photo-1530103862676-de8c9debad1d?auto=format&fit=crop&q=80&w=800'
+    ],
+    musicTitle: 'Upbeat Birthday Party Pop',
+    loveStory: [],
+    bankAccounts: [
+      { bankName: 'Gopay / ShopeePay', accountNumber: '085711223344', accountHolder: 'Kayla Zhafira' }
+    ],
+    guestList: [
+      { id: 'g-101', name: 'Siti & Geng SMA', phone: '0812998877', category: 'Sahabat SMA', statusSent: true }
+    ],
+    rsvps: [
+      { id: 'r-101', name: 'Siti Aulia', attendance: 'Hadir', pax: 1, message: 'Happy birthday Kayla cantik! Can’t wait for the party!', date: '29 Juli 2026' }
+    ]
+  }
+];
+
 
 export const INITIAL_HERO_CONFIG: HeroConfig = {
   eyebrowPill: 'Digital Invitation Platform #1 Indonesia',
