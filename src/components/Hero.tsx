@@ -1,12 +1,15 @@
 import React from 'react';
 import { Sparkles, Play, ArrowRight, CheckCircle2, Star, Heart, ShieldCheck } from 'lucide-react';
+import { HeroConfig } from '../types';
+import { INITIAL_HERO_CONFIG } from '../data/mockData';
 
 interface HeroProps {
   onOpenCreateModal: () => void;
   onScrollToStudio: () => void;
+  heroConfig?: HeroConfig;
 }
 
-export const Hero: React.FC<HeroProps> = ({ onOpenCreateModal, onScrollToStudio }) => {
+export const Hero: React.FC<HeroProps> = ({ onOpenCreateModal, onScrollToStudio, heroConfig = INITIAL_HERO_CONFIG }) => {
   return (
     <section className="relative min-h-screen pt-32 sm:pt-40 pb-20 px-4 sm:px-8 flex flex-col justify-center items-center overflow-hidden">
       {/* Mesh Gradient Ambient Background Blobs */}
@@ -30,20 +33,20 @@ export const Hero: React.FC<HeroProps> = ({ onOpenCreateModal, onScrollToStudio 
         {/* Eyebrow Pill */}
         <div className="mb-6 px-4 sm:px-5 py-1.5 bg-white/40 backdrop-blur-md border border-white/60 rounded-full text-[11px] sm:text-xs uppercase tracking-[0.25em] text-slate-600 font-bold shadow-sm inline-flex items-center gap-2">
           <span className="w-2 h-2 rounded-full bg-purple-500 animate-pulse"></span>
-          <span>Digital Invitation Platform #1 Indonesia</span>
+          <span>{heroConfig.eyebrowPill}</span>
         </div>
 
         {/* Hero Main Headline */}
         <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-[82px] leading-[0.98] font-serif-title italic text-slate-800 mb-6 tracking-tight">
-          Your Story, <br className="hidden sm:inline" />
+          {heroConfig.titlePart1} <br className="hidden sm:inline" />
           <span className="font-sans-body not-italic font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-slate-900 via-purple-950 to-slate-800">
-            Beautifully Shared.
+            {heroConfig.titleGradient}
           </span>
         </h1>
 
         {/* Subtitle */}
         <p className="max-w-2xl text-slate-600 text-base sm:text-lg md:text-xl mb-10 leading-relaxed font-sans-body">
-          Buat momen pernikahan & acara istimewa Anda tak terlupakan dengan undangan digital yang <span className="font-semibold text-purple-900 underline decoration-purple-300 underline-offset-4">elegan, interaktif</span>, dan siap disebar dalam 5 menit.
+          {heroConfig.subtitle}
         </p>
 
         {/* CTA Button Group */}
@@ -126,18 +129,18 @@ export const Hero: React.FC<HeroProps> = ({ onOpenCreateModal, onScrollToStudio 
         {/* Social Proof Stats */}
         <div className="mt-14 grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-12 w-full max-w-4xl py-6 px-8 bg-white/20 backdrop-blur-md border border-white/40 rounded-3xl text-center">
           <div>
-            <div className="text-2xl sm:text-3xl font-extrabold text-slate-800 font-sans-body">15,000+</div>
+            <div className="text-2xl sm:text-3xl font-extrabold text-slate-800 font-sans-body">{heroConfig.totalCreatedStat}</div>
             <div className="text-[11px] uppercase tracking-wider text-slate-500 font-bold mt-1">Undangan Terbuat</div>
           </div>
           <div>
             <div className="text-2xl sm:text-3xl font-extrabold text-slate-800 font-sans-body flex items-center justify-center gap-1">
-              <span>4.9</span>
+              <span>{heroConfig.satisfactionStat}</span>
               <Star className="w-5 h-5 fill-amber-400 text-amber-400" />
             </div>
             <div className="text-[11px] uppercase tracking-wider text-slate-500 font-bold mt-1">Kepuasan Pengguna</div>
           </div>
           <div>
-            <div className="text-2xl sm:text-3xl font-extrabold text-slate-800 font-sans-body">5 Menit</div>
+            <div className="text-2xl sm:text-3xl font-extrabold text-slate-800 font-sans-body">{heroConfig.timeStat}</div>
             <div className="text-[11px] uppercase tracking-wider text-slate-500 font-bold mt-1">Proses Pembuatan</div>
           </div>
           <div>

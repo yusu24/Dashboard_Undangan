@@ -62,3 +62,53 @@ export interface WishComment {
   message: string;
   time: string;
 }
+
+export interface FaqItem {
+  id: string;
+  question: string;
+  answer: string;
+}
+
+export interface HeroConfig {
+  eyebrowPill: string;
+  titlePart1: string;
+  titleGradient: string;
+  subtitle: string;
+  featuredBadge: string;
+  featuredTitle: string;
+  featuredDescription: string;
+  totalCreatedStat: string;
+  satisfactionStat: string;
+  timeStat: string;
+}
+
+export interface Order {
+  id: string;
+  customerName: string;
+  customerEmail: string;
+  customerPhone: string;
+  templateId: string;
+  templateName: string;
+  planId: string;
+  planName: string;
+  amount: number;
+  status: 'Aktif' | 'Pending' | 'Expired' | 'Dibatalkan';
+  paymentMethod: string;
+  createdAt: string;
+  weddingDate: string;
+  coupleNames: string;
+  slug: string;
+}
+
+export interface UserAccount {
+  id: string;
+  name: string;
+  email: string;
+  role: 'admin' | 'user';
+  avatar?: string;
+  package: string;
+  joinedAt: string;
+  invitationsCount: number;
+  status: 'Aktif' | 'Terblokir';
+}
+

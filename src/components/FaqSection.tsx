@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
 import { FAQ_DATA } from '../data/mockData';
+import { FaqItem } from '../types';
 import { ChevronDown, Sparkles, HelpCircle } from 'lucide-react';
 
-export const FaqSection: React.FC = () => {
+interface FaqSectionProps {
+  faqData?: FaqItem[];
+}
+
+export const FaqSection: React.FC<FaqSectionProps> = ({ faqData = FAQ_DATA }) => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   const toggleFaq = (index: number) => {
@@ -29,7 +34,7 @@ export const FaqSection: React.FC = () => {
 
         {/* Accordion Items */}
         <div className="space-y-4">
-          {FAQ_DATA.map((faq, idx) => {
+          {faqData.map((faq, idx) => {
             const isOpen = openIndex === idx;
             return (
               <div

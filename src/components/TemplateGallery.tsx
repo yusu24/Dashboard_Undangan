@@ -5,13 +5,14 @@ import { Sparkles, Eye, Check, Heart, Search, Filter } from 'lucide-react';
 
 interface TemplateGalleryProps {
   onSelectTemplate: (template: TemplateTheme) => void;
+  templates?: TemplateTheme[];
 }
 
-export const TemplateGallery: React.FC<TemplateGalleryProps> = ({ onSelectTemplate }) => {
+export const TemplateGallery: React.FC<TemplateGalleryProps> = ({ onSelectTemplate, templates = TEMPLATES_DATA }) => {
   const [activeCategory, setActiveCategory] = useState<TemplateCategory>('all');
   const [searchQuery, setSearchQuery] = useState('');
 
-  const filteredTemplates = TEMPLATES_DATA.filter((tmpl) => {
+  const filteredTemplates = templates.filter((tmpl) => {
     const matchesCategory = activeCategory === 'all' || tmpl.category === activeCategory;
     const matchesSearch = tmpl.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
                           tmpl.tag.toLowerCase().includes(searchQuery.toLowerCase()) ||

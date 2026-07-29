@@ -1,4 +1,163 @@
-import { TemplateTheme, PricingPlan, FeatureItem, Testimonial, WishComment } from '../types';
+import { TemplateTheme, PricingPlan, FeatureItem, Testimonial, WishComment, HeroConfig, Order, UserAccount, FaqItem } from '../types';
+
+export const INITIAL_HERO_CONFIG: HeroConfig = {
+  eyebrowPill: 'Digital Invitation Platform #1 Indonesia',
+  titlePart1: 'Your Story,',
+  titleGradient: 'Beautifully Shared.',
+  subtitle: 'Buat momen pernikahan & acara istimewa Anda tak terlupakan dengan undangan digital yang elegan, interaktif, dan siap disebar dalam 5 menit.',
+  featuredBadge: 'Featured Theme 2026',
+  featuredTitle: 'The Ethereal Garden',
+  featuredDescription: 'Estetika floral lembut transparan dengan efek animasi kelopak mekar, lagu latar romantis, dan sistem RSVP digital otomatis.',
+  totalCreatedStat: '15,000+',
+  satisfactionStat: '4.9',
+  timeStat: '5 Menit'
+};
+
+export const INITIAL_ORDERS: Order[] = [
+  {
+    id: 'INV-2026-001',
+    customerName: 'Rian Pratama',
+    customerEmail: 'rian.pratama@gmail.com',
+    customerPhone: '081234567890',
+    templateId: 'ethereal-garden',
+    templateName: 'The Ethereal Garden',
+    planId: 'plan-gold',
+    planName: 'Paket Gold',
+    amount: 79000,
+    status: 'Aktif',
+    paymentMethod: 'QRIS Gopay',
+    createdAt: '28 Juli 2026',
+    weddingDate: '24 Oktober 2026',
+    coupleNames: 'Rian & Anindya',
+    slug: 'rian-anindya'
+  },
+  {
+    id: 'INV-2026-002',
+    customerName: 'Muhammad Hafiz',
+    customerEmail: 'hafiz.m@gmail.com',
+    customerPhone: '081987654321',
+    templateId: 'royal-gold',
+    templateName: 'Royal Gold & Velvet',
+    planId: 'plan-platinum',
+    planName: 'Paket Platinum Custom',
+    amount: 139000,
+    status: 'Aktif',
+    paymentMethod: 'Bank Transfer BCA',
+    createdAt: '27 Juli 2026',
+    weddingDate: '12 November 2026',
+    coupleNames: 'Hafiz & Sarah',
+    slug: 'hafiz-sarah'
+  },
+  {
+    id: 'INV-2026-003',
+    customerName: 'Kayla Zhafira',
+    customerEmail: 'kayla.sweet17@gmail.com',
+    customerPhone: '085711223344',
+    templateId: 'sweet-sixteen',
+    templateName: 'Pastel Dream Birthday',
+    planId: 'plan-gold',
+    planName: 'Paket Gold',
+    amount: 79000,
+    status: 'Pending',
+    paymentMethod: 'ShopeePay',
+    createdAt: '29 Juli 2026',
+    weddingDate: '20 September 2026',
+    coupleNames: 'Kayla Sweet 17th',
+    slug: 'kayla-sweet17'
+  },
+  {
+    id: 'INV-2026-004',
+    customerName: 'Aditya Dimas',
+    customerEmail: 'aditya.dimas@yahoo.com',
+    customerPhone: '081399887766',
+    templateId: 'rustic-botanical',
+    templateName: 'Rustic Earthy Leaves',
+    planId: 'plan-basic',
+    planName: 'Paket Gratis',
+    amount: 0,
+    status: 'Aktif',
+    paymentMethod: 'Gratis',
+    createdAt: '25 Juli 2026',
+    weddingDate: '05 Desember 2026',
+    coupleNames: 'Aditya & Clara',
+    slug: 'aditya-clara'
+  }
+];
+
+export const INITIAL_USERS: UserAccount[] = [
+  {
+    id: 'usr-1',
+    name: 'Admin Invitra',
+    email: 'admin@invitra.com',
+    role: 'admin',
+    avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=200',
+    package: 'Super Admin VIP',
+    joinedAt: '01 Januari 2026',
+    invitationsCount: 12,
+    status: 'Aktif'
+  },
+  {
+    id: 'usr-2',
+    name: 'Rian Pratama',
+    email: 'rian.pratama@gmail.com',
+    role: 'user',
+    avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=200',
+    package: 'Paket Gold',
+    joinedAt: '15 Juni 2026',
+    invitationsCount: 1,
+    status: 'Aktif'
+  },
+  {
+    id: 'usr-3',
+    name: 'Siti Sarah',
+    email: 'sarah.siti@gmail.com',
+    role: 'user',
+    avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=200',
+    package: 'Paket Platinum',
+    joinedAt: '20 Juli 2026',
+    invitationsCount: 2,
+    status: 'Aktif'
+  },
+  {
+    id: 'usr-4',
+    name: 'Bpk. Fajar Aqiqah',
+    email: 'fajar.aqiqah@gmail.com',
+    role: 'user',
+    package: 'Paket Gold',
+    joinedAt: '28 Juli 2026',
+    invitationsCount: 1,
+    status: 'Aktif'
+  }
+];
+
+export const FAQ_DATA: FaqItem[] = [
+  {
+    id: 'faq-1',
+    question: 'Berapa lama proses pembuatan undangan digital di INVITRA?',
+    answer: 'Hanya butuh 3 hingga 5 menit! Anda cukup memilih tema favorit, mengisi informasi acara dan nama pengantin/tuan rumah, lalu undangan langsung siap disebarkan.'
+  },
+  {
+    id: 'faq-2',
+    question: 'Apakah bisa mengubah data setelah undangan dipublikasikan?',
+    answer: 'Ya, tentu saja! Anda bisa mengedit tanggal, lokasi, galeri foto, musik, maupun rekening amplop digital kapan saja tanpa mengubah link undangan yang sudah disebar.'
+  },
+  {
+    id: 'faq-3',
+    question: 'Bagaimana cara menyebarkan undangan ke pesan WhatsApp?',
+    answer: 'Sistem INVITRA menyediakan fitur auto-generate pesan WhatsApp dengan nama tamu kustom (misal: Yth. Bpk/Ibu Ahmad). Tinggal klik 1 tombol langsung terhubung ke WhatsApp.'
+  },
+  {
+    id: 'faq-4',
+    question: 'Apakah tamu perlu mengunduh aplikasi untuk membuka undangan?',
+    answer: 'Tidak perlu sama sekali! Undangan berbasis web responsif modern, sehingga dapat dibuka secara langsung di browser smartphone (Android/iOS) maupun laptop tanpa install apapun.'
+  },
+  {
+    id: 'faq-5',
+    question: 'Metode pembayaran apa saja yang didukung?',
+    answer: 'Kami mendukung seluruh pembayaran lokal Indonesia seperti QRIS (Gopay, OVO, ShopeePay, Dana, LinkAja), Transfer Bank (BCA, Mandiri, BRI, BNI), dan Kartu Kredit.'
+  }
+];
+
 
 export const TEMPLATES_DATA: TemplateTheme[] = [
   {
@@ -279,28 +438,5 @@ export const INITIAL_WISHES: WishComment[] = [
     status: 'Ragu-ragu',
     message: 'Barakallah teman kecilku! Semoga dimudahkan urusannya, insyaAllah usahain hadir!',
     time: '1 jam yang lalu'
-  }
-];
-
-export const FAQ_DATA = [
-  {
-    question: 'Berapa lama proses pembuatan undangan digital di INVITRA?',
-    answer: 'Hanya butuh 3 hingga 5 menit! Anda cukup memilih tema favorit, mengisi informasi acara dan nama pengantin/tuan rumah, lalu undangan langsung siap disebarkan.'
-  },
-  {
-    question: 'Apakah bisa mengubah data setelah undangan dipublikasikan?',
-    answer: 'Ya, tentu saja! Anda bisa mengedit tanggal, lokasi, galeri foto, musik, maupun rekening amplop digital kapan saja tanpa mengubah link undangan yang sudah disebar.'
-  },
-  {
-    question: 'Bagaimana cara menyebarkan undangan ke pesan WhatsApp?',
-    answer: 'Sistem INVITRA menyediakan fitur auto-generate pesan WhatsApp dengan nama tamu kustom (misal: Yth. Bpk/Ibu Ahmad). Tinggal klik 1 tombol langsung terhubung ke WhatsApp.'
-  },
-  {
-    question: 'Apakah tamu perlu mengunduh aplikasi untuk membuka undangan?',
-    answer: 'Tidak perlu sama sekali! Undangan berbasis web responsif modern, sehingga dapat dibuka secara langsung di browser smartphone (Android/iOS) maupun laptop tanpa install apapun.'
-  },
-  {
-    question: 'Metode pembayaran apa saja yang didukung?',
-    answer: 'Kami mendukung seluruh pembayaran lokal Indonesia seperti QRIS (Gopay, OVO, ShopeePay, Dana, LinkAja), Transfer Bank (BCA, Mandiri, BRI, BNI), dan Kartu Kredit.'
   }
 ];

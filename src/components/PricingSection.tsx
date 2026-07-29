@@ -5,9 +5,10 @@ import { Check, Sparkles, Heart, ArrowRight } from 'lucide-react';
 
 interface PricingSectionProps {
   onSelectPlan: (plan: PricingPlan) => void;
+  plansData?: PricingPlan[];
 }
 
-export const PricingSection: React.FC<PricingSectionProps> = ({ onSelectPlan }) => {
+export const PricingSection: React.FC<PricingSectionProps> = ({ onSelectPlan, plansData = PRICING_PLANS }) => {
   const [isAnnual, setIsAnnual] = useState(true);
 
   return (
@@ -30,7 +31,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onSelectPlan }) 
 
         {/* Pricing Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
-          {PRICING_PLANS.map((plan) => {
+          {plansData.map((plan) => {
             const isPopular = plan.popular;
             return (
               <div
