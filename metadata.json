@@ -1,0 +1,6 @@
+{
+  "name": "Undangan Kita - Website Undangan Digital Elegan",
+  "description": "Landing page platform undangan digital interaktif, lengkap dengan pilihan tema pesta/pernikahan, Live Interactive Preview, RSVP, ucapan, gift digital, dan studio kustomisasi.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
